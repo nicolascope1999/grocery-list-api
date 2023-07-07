@@ -1,0 +1,41 @@
+version: "3.9"
+# service to run the dockerfile
+# . run the dockerfile in the current directory
+# map the port 8000 to the port 8000 in the container
+# map the current directory to the /app directory in the container
+# run the command to start the server
+# DEV=true used to run the server in development mode is. requirements.dev.txt is used
+services:
+  app:
+    build:
+      context: .
+      args:
+        - DEV=true
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./app:/app
+    command: >
+      sh -c "python manage.py runserver 0.0.0.0:8000"
+    environment:
+      - DB_HOST=db
+      - DB_NAME=devdb
+      - DB_USER=devuser
+      - DB_PASS=changeme
+    depends_on:
+      - db
+
+  # create the database image
+# creates a named db for development server
+# a new db must be created for production and values chageed
+  db:
+    image: postgres:13-alpine
+    volumes:
+      - dev-db-data:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_DB=devdb
+      - POSTGRES_USER=devuser
+      - POSTGRES_PASSWORD=changeme
+
+volumes:
+  dev-db-data:
