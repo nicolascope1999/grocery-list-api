@@ -1,9 +1,10 @@
 """Serializsers for user app."""
 
-from django.contrib.auth import get_user_model, authenticate # authenticate is a helper function that comes with django
+from django.contrib.auth import get_user_model, authenticate  # authenticate is a helper function that comes with django
+from django.utils.translation import \
+    gettext_lazy as _  # this is a convention for converting strings to human readable text
 # serializer is a way of converting data into a format that can be easily transferred over the network
 from rest_framework import serializers
-from django.utils.translation import gettext_lazy as _ # this is a convention for converting strings to human readable text
 
 
 # model serializer is a serializer that is specifically tied to a model in the database
