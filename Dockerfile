@@ -21,7 +21,7 @@ ARG DEV=false
 # creates a new virtual environment
 # upgrade pip and install requirements
 # remove the temporary directory keeps docker image lightweight
-# create a users to run the application best practice not to use the root users.
+# create a user to run the application best practice not to use the root user.
 # if the dev arg is true install the dev requirements
 # the apk installs the postgresql client and the .tmp-build-deps installs the build dependencies
 # the --virtual flag creates a virtual package that can be removed later
@@ -39,8 +39,8 @@ RUN python -m venv /py && \
     adduser \
         --disabled-password \
         --no-create-home \
-        django-users
+        django-user
 # adds python to the path
 ENV PATH="/py/bin:$PATH"
-# switch to the django-users. up till now the commands have been run as root users.
+# switch to the django-user. up till now the commands have been run as root user.
 USER django-user

@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'core', # this is the app we created
-    'users', # this is the app we created
+    'user', # this is the app we created
     'rest_framework', # this is the rest framework we installed
     'rest_framework.authtoken', # this is the rest framework we installed
 ]
@@ -129,4 +129,4 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-AUTH_USER_MODEL = 'core.User' # this is the users model we created in core\models.py
+AUTH_USER_MODEL = 'core.User' # this is the user model we created in core\models.py
