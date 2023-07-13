@@ -37,10 +37,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework', # this is the rest framework we installed
+    'rest_framework.authtoken',
+    'rest_framework.test',# this is the rest framework we installed
     'core', # this is the app we created
     'user', # this is the app we created
-    'rest_framework', # this is the rest framework we installed
-    'rest_framework.authtoken', # this is the rest framework we installed
     'groceries', # this is the app we created
 ]
 
