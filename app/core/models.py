@@ -48,3 +48,7 @@ class Groceries(models.Model):
 
     def __str__(self):
         return self.name
+
+    def create(self, validated_data):
+        """Create a new groceries"""
+        return Groceries.objects.create(**validated_data)

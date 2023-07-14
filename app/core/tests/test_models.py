@@ -44,3 +44,49 @@ class ModelTests(TestCase):
 
             # Assert
             self.assertEqual(user.email, expected)
+
+    def test_new_user_invalid_email(self):
+        """Test creating user with no email raises error"""
+        # Arrange
+        email = None
+
+        # Act
+        with self.assertRaises(ValueError):
+            get_user_model().objects.create_user(
+                email=email,
+                password="test123",
+                name="Test Name"
+            )
+
+    def test_create_new_superuser(self):
+        """Test creating a new superuser"""
+        # Arrange
+        email = "admin@example.com"
+        password = "test123"
+
+        # Act
+        user = get_user_model().objects.create_superuser(
+            email=email,
+            password=password
+        )
+
+        # Assert
+        self.assertTrue(user.is_superuser)
+        self.assertTrue(user.is_staff)
+
+    def test_create_groceries(self):
+        """Test creating a new groceries"""
+        # Arrange
+        self.user = get_user_model().objects.create_user(
+            email="test@example.com",
+            password="test123",
+            name="Test Name"
+        )
+        name = "ItemToTests"
+
+        # Act
+
+
+        # Assert
+        self.assertEqual(groceries.name, name)
+        self.assertEqual(groceries.user, self.user)

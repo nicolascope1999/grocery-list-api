@@ -9,7 +9,7 @@ from groceries import views
 # create a router
 router = DefaultRouter()
 # creates an endpoint for our viewset
-router.register('', views.GroceriesViewSet)
+router.register('groceries', views.GroceriesViewSet)
 # name for reverse  lookups
 app_name = 'groceries'
 # retrieve urls
